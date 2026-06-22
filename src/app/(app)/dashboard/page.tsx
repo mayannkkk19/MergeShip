@@ -62,17 +62,6 @@ export default async function DashboardPage() {
   const level = profile?.level ?? 0;
   const githubHandle = profile?.github_handle ?? 'Contributor';
 
-  const { count: claimedCount } = await service
-    .from('recommendations')
-    .select('id', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .in('status', ['claimed', 'completed']);
-
-  const { count: prCount } = await service
-    .from('pull_requests')
-    .select('id', { count: 'exact', head: true })
-    .eq('author_user_id', user.id);
-
   return (
     <div className="min-h-screen bg-[#0d1117] p-6 font-mono text-white md:p-10">
       <div className="mx-auto max-w-[1400px]">

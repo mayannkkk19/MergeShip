@@ -138,7 +138,7 @@ function Step3({ onBack }: { onBack: () => void }) {
         >
           Back
         </button>
-        <Link href="/onboarding/analyze" className="btn-primary rounded-xl px-6 py-3 font-semibold">
+        <Link href="/maintainer" className="btn-primary rounded-xl px-6 py-3 font-semibold">
           Go to Dashboard
         </Link>
       </div>

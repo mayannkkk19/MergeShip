@@ -44,68 +44,104 @@ export default async function OnboardingCompletePage() {
   const autoAssignMentorChain = settingsRes.data.autoAssignMentorChain;
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#0D0E12] px-6 py-16 text-white">
-      <section className="flex w-full max-w-xl flex-col items-center text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-neon-green/15">
-          <CheckCircle2 className="h-9 w-9 text-neon-green" strokeWidth={2.5} />
-        </div>
+    <main className="flex min-h-screen flex-col bg-[#0D0E12] text-white">
+      <section className="flex flex-1 items-center justify-center px-6 py-16">
+        <div className="flex w-full max-w-xl flex-col items-center text-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-neon-green/15">
+            <CheckCircle2 className="h-9 w-9 text-neon-green" strokeWidth={2.5} />
+          </div>
 
-        <h1 className="mt-6 text-3xl font-bold md:text-4xl">
-          <span className="text-neon-green">{install.accountLogin}</span> is live on MergeShip
-        </h1>
-        <p className="mt-3 text-zinc-400">
-          Your review queue is set up. Here&apos;s what you just configured.
-        </p>
+          <h1 className="mt-6 text-3xl font-bold md:text-4xl">
+            <span className="text-neon-green">{install.accountLogin}</span> is live on MergeShip
+          </h1>
+          <p className="mt-3 text-zinc-400">
+            Your review queue is set up. Here&apos;s what you just configured.
+          </p>
 
-        <div className="mt-10 w-full overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/40 text-left">
-          <SummaryRow
-            icon={<GitBranch className="h-4 w-4 text-zinc-400" />}
-            label="Repos connected"
-            badge={managedNames.length > 0 ? String(managedNames.length) : undefined}
-          >
-            <RepoNameTicker
-              names={managedNames}
-              className="text-sm font-medium text-white"
-              emptyLabel="No repos connected"
-            />
-          </SummaryRow>
+          <div className="mt-10 w-full overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/40 text-left">
+            <SummaryRow
+              icon={<GitBranch className="h-4 w-4 text-zinc-400" />}
+              label="Repos connected"
+              badge={managedNames.length > 0 ? String(managedNames.length) : undefined}
+            >
+              <RepoNameTicker
+                names={managedNames}
+                className="text-sm font-medium text-white"
+                emptyLabel="No repos connected"
+              />
+            </SummaryRow>
 
-          <SummaryRow
-            icon={<ShieldCheck className="h-4 w-4 text-zinc-400" />}
-            label="AI-generated PR detection"
-          >
-            {/* Placeholder until #329 adds the detection setting. */}
-            <span className="text-sm text-zinc-500">Not configured yet</span>
-          </SummaryRow>
+            <SummaryRow
+              icon={<ShieldCheck className="h-4 w-4 text-zinc-400" />}
+              label="AI-generated PR detection"
+            >
+              {/* Placeholder until #329 adds the detection setting. */}
+              <span className="text-sm text-zinc-500">Not configured yet</span>
+            </SummaryRow>
 
-          <SummaryRow icon={<Users className="h-4 w-4 text-zinc-400" />} label="Mentor chain" last>
-            <span className="text-sm font-medium text-white">
-              {autoAssignMentorChain ? (
-                <>
-                  On <span className="text-zinc-500">— routing L0/L1 to senior maintainers</span>
-                </>
-              ) : (
-                <span className="text-zinc-500">Off</span>
-              )}
-            </span>
-          </SummaryRow>
-        </div>
+            <SummaryRow
+              icon={<Users className="h-4 w-4 text-zinc-400" />}
+              label="Mentor chain"
+              last
+            >
+              <span className="text-sm font-medium text-white">
+                {autoAssignMentorChain ? (
+                  <>
+                    On <span className="text-zinc-500">— routing L0/L1 to senior maintainers</span>
+                  </>
+                ) : (
+                  <span className="text-zinc-500">Off</span>
+                )}
+              </span>
+            </SummaryRow>
+          </div>
 
-        <div className="mt-10 flex w-full flex-col gap-3 sm:flex-row">
-          <Link
-            href="/maintainer"
-            className="flex-1 rounded-md bg-neon-green px-5 py-3.5 text-center font-medium text-black"
-          >
-            Go to dashboard
-          </Link>
-          <Link
-            href="/onboarding/repos"
-            className="flex-1 rounded-md border border-zinc-700 px-5 py-3.5 text-center font-medium text-white"
-          >
-            Adjust repos
-          </Link>
+          <div className="mt-10 flex w-full flex-col gap-3 sm:flex-row">
+            <Link
+              href="/maintainer"
+              className="flex-1 rounded-md bg-neon-green px-5 py-3.5 text-center font-medium text-black"
+            >
+              Go to dashboard
+            </Link>
+            <Link
+              href="/onboarding/repos"
+              className="flex-1 rounded-md border border-zinc-700 px-5 py-3.5 text-center font-medium text-white"
+            >
+              Adjust repos
+            </Link>
+          </div>
         </div>
       </section>
+      <footer className="relative z-[1] mt-auto w-full border-t border-white/10 px-12 py-8">
+        <div className="mx-auto flex max-w-[1200px] items-center justify-between">
+          <div className="text-[0.82rem] leading-[1.4] text-[#555]">
+            © 2026 MergeShip. <span className="text-[#888]">Built for performance.</span>
+          </div>
+
+          <div className="flex items-center gap-6">
+            <Link
+              href="/docs"
+              className="text-[0.82rem] text-[#555] no-underline transition-colors duration-200 hover:text-[#f0f0f0]"
+            >
+              Read the docs
+            </Link>
+
+            <Link
+              href="#"
+              className="text-[0.82rem] text-[#555] no-underline transition-colors duration-200 hover:text-[#f0f0f0]"
+            >
+              Watch a 2-min demo
+            </Link>
+
+            <Link
+              href="https://discord.gg/your-discord"
+              className="text-[0.82rem] text-[#555] no-underline transition-colors duration-200 hover:text-[#f0f0f0]"
+            >
+              Join our Discord
+            </Link>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

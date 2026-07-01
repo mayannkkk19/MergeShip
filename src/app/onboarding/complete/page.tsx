@@ -47,14 +47,7 @@ export default async function OnboardingCompletePage() {
     <main className="flex min-h-screen flex-col bg-[#0D0E12] text-white">
       <header className="flex items-center justify-between px-6 py-4">
         {/* Logo */}
-        <div
-          className="nav-logo"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-          }}
-        >
+        <div className="nav-logo flex items-center gap-2.5">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -62,11 +55,7 @@ export default async function OnboardingCompletePage() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            style={{
-              width: '22px',
-              height: '22px',
-              color: 'var(--neon)',
-            }}
+            className="h-[22px] w-[22px] text-[var(--neon)]"
           >
             <circle cx="12" cy="4" r="2" />
             <line x1="12" y1="6" x2="12" y2="14" />
@@ -77,16 +66,7 @@ export default async function OnboardingCompletePage() {
             <circle cx="19" cy="10" r="1" />
           </svg>
 
-          <span
-            className="wordmark"
-            style={{
-              fontFamily: 'var(--font-outfit), Outfit, sans-serif',
-              fontSize: '1.15rem',
-              fontWeight: 700,
-              color: 'var(--text-primary)',
-              letterSpacing: '-0.02em',
-            }}
-          >
+          <span className="wordmark font-outfit text-[1.15rem] font-bold tracking-tight text-[var(--text-primary)]">
             MergeShip
           </span>
         </div>
@@ -109,14 +89,6 @@ export default async function OnboardingCompletePage() {
               </div>
             ))}
           </div>
-
-          {/* Sign in */}
-          <Link
-            href="/dev/login"
-            className="text-sm font-medium text-gray-400 transition-colors hover:text-white"
-          >
-            Sign in instead
-          </Link>
         </div>
       </header>
       <section className="flex flex-1 items-center justify-center px-6 py-16">
@@ -162,7 +134,9 @@ export default async function OnboardingCompletePage() {
               label="AI-generated PR detection"
             >
               {/* Placeholder until #329 adds the detection setting. */}
-              <span className="text-sm text-zinc-500">Not configured yet</span>
+              <span className="text-sm text-zinc-500">
+                {settingsRes.data.aiPrDetection ? 'On' : 'Off'}
+              </span>
             </SummaryRow>
 
             <SummaryRow
@@ -200,28 +174,23 @@ export default async function OnboardingCompletePage() {
       </section>
       <footer className="relative z-[1] mt-auto w-full border-t border-white/10 px-12 py-8">
         <div className="mx-auto flex max-w-[1200px] items-center justify-between">
-          <div className="text-[0.82rem] leading-[1.4] text-[#555]">
-            © 2026 MergeShip. <span className="text-[#888]">Built for performance.</span>
+          <div className="text-[0.82rem] leading-[1.4] text-zinc-500">
+            © 2026 MergeShip. <span className="text-zinc-400">Built for performance.</span>
           </div>
 
           <div className="flex items-center gap-6">
             <Link
               href="/docs"
-              className="text-[0.82rem] text-[#555] no-underline transition-colors duration-200 hover:text-[#f0f0f0]"
+              className="text-[0.82rem] text-zinc-500 no-underline transition-colors duration-200 hover:text-white"
             >
               Read the docs
             </Link>
 
-            <Link
-              href="#"
-              className="text-[0.82rem] text-[#555] no-underline transition-colors duration-200 hover:text-[#f0f0f0]"
-            >
-              Watch a 2-min demo
-            </Link>
+            {/*Watch a 2 min demo video link space */}
 
             <Link
               href="https://discord.gg/Wg4xZt3DRx"
-              className="text-[0.82rem] text-[#555] no-underline transition-colors duration-200 hover:text-[#f0f0f0]"
+              className="text-[0.82rem] text-zinc-500 no-underline transition-colors duration-200 hover:text-white"
             >
               Join our Discord
             </Link>
